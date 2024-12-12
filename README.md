@@ -50,8 +50,21 @@ Mediapipe와 TensorFlow를 활용하여 수어 데이터를 인식하고 학습�
 
 
 
+### 3. 데이터셋 준비 (prepare_dataset.py)
+- **기능**:
+  - 지정된 폴더 구조에서 이미지를 읽어오고, 각 이미지의 랜드마크를 추출하여 학습 데이터를 준비합니다.
+  - 데이터를 학습용과 테스트용으로 분리하고, 라벨 데이터를 원-핫 인코딩합니다.
+    
+- **핵심 내용**:
+  - 각 클래스의 하위 폴더에서 이미지를 읽고 랜드마크를 추출합니다.
+  - 준비된 데이터를 학습 데이터(80%)와 테스트 데이터(20%)로 분리합니다.
+  - 각 제스처 클래스 라벨을 원-핫 벡터 형태로 변환하여 신경망 모델 학습에 적합한 형태로 변환합니다.
+  - X_train, X_test: 학습 및 테스트용 랜드마크 데이터 / y_train, y_test: 학습 및 테스트용 원-핫 인코딩된 라벨 데이터 / gestures: 제스처 클래스 이름 리스트
+ 
 
-### 3. 모델 학습 (train_model.py)
+
+
+### 4. 모델 학습 (train_model.py)
 - **기능**:
   - LSTM을 사용하여 수어 인식을 위한 모델을 학습합니다.
 
@@ -64,7 +77,7 @@ Mediapipe와 TensorFlow를 활용하여 수어 데이터를 인식하고 학습�
 
 
 
-### 4. 필요 패키지 (requirements.txt)
+### 5. 필요 패키지 (requirements.txt)
 주요 패키지:
 - numpy==1.23.0
 - opencv-python==4.10.0.84
@@ -87,6 +100,8 @@ Mediapipe와 TensorFlow를 활용하여 수어 데이터를 인식하고 학습�
 ├── data_collection.py # 데이터 수집을 위한 코드 
 
 ├── landmark_extraction.py # Mediapipe를 활용한 랜드마크 추출 코드 
+
+├── prepare_dataset.py # # 데이터셋 준비 코드
 
 ├── train_model.py # LSTM 모델 학습 코드 
 
